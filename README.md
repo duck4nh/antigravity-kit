@@ -1,6 +1,6 @@
 # 🚀 Antigravity Kit
 
-> **Bộ công cụ mở rộng khả năng AI Agent** - Tập hợp skills, rules và workflows để tăng cường năng lực cho AI coding assistants.
+> **Bộ công cụ mở rộng khả năng AI Agent** - Tập hợp skills, rules và workflows, UX/UI Pro Max để tăng cường năng lực cho AI coding assistants.
 
 [![Skills](https://img.shields.io/badge/Skills-35+-blue)](#-skills)
 [![Rules](https://img.shields.io/badge/Rules-10-green)](#-rules)
