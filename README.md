@@ -1,45 +1,90 @@
-# 🚀 Antigravity Kit
+# Antigravity Kit
 
-> **AI Agent Capability Expansion Toolkit** - A comprehensive collection of skills, rules, and workflows to supercharge AI coding assistants.
+> **AI Agent Capability Expansion Toolkit** - A comprehensive collection of skills, rules, and workflows for AI coding assistants.
 
-[![Skills](https://img.shields.io/badge/Skills-35+-blue)](#-skills)
-[![Rules](https://img.shields.io/badge/Rules-10-green)](#-rules)
-[![Workflows](https://img.shields.io/badge/Workflows-2-orange)](#-workflows)
+[![Skills](https://img.shields.io/badge/Skills-42+-blue)](#-skills)
+[![Rules](https://img.shields.io/badge/Rules-13-green)](#-rules)
+[![IDEs](https://img.shields.io/badge/IDEs-Antigravity%20%7C%20OpenCode-purple)](#-installation)
 
 ---
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Introduction](#-introduction)
+- [Supported IDEs](#-supported-ides)
+- [Installation](#-installation)
 - [Skills](#-skills)
 - [Rules](#-rules)
-- [Workflows](#-workflows)
-- [Installation](#-installation)
 - [Usage](#-usage)
 - [Credits](#-credits)
 - [Contributing](#-contributing)
 
 ---
 
-## 🎯 Introduction
+## Introduction
 
 **Antigravity Kit** is a comprehensive collection of:
 
 - **Skills** - Domain-specific expertise (React, Node.js, Database, Testing, UI/UX...)
 - **Rules** - Guidelines and constraints for agent behavior
-- **Workflows** - Step-by-step procedures for common tasks
+- **Modes** - Task-specific workflows (Build, Debug, Optimize, Review...)
 
 This toolkit combines the best of:
-- 🎨 **[UI UX Pro Max](https://ui-ux-pro-max-skill.nextlevelbuilder.io/)** - Design Intelligence with 50 styles, 21 palettes, 50 font pairings
-- 🛠️ **[ClaudeKit](https://claudekit.cc/)** - Production-ready AI subagents, workflows, and integrations
-
-Designed to integrate with AI agents supporting the **Agent Skills** standard.
+- [UI UX Pro Max](https://ui-ux-pro-max-skill.nextlevelbuilder.io/) - Design Intelligence with 50 styles, 21 palettes, 50 font pairings
+- [ClaudeKit](https://claudekit.cc/) - Production-ready AI subagents, workflows, and integrations
 
 ---
 
-## 🧠 Skills
+## Supported IDEs
 
-Skills are domain-specific expertise modules. The agent automatically identifies and uses the appropriate skill for each task.
+| IDE | Folder | Features |
+|-----|--------|----------|
+| **OpenCode** | `.opencode/` + `AGENTS.md` | Skills loaded on-demand, minimal context (~2500 tokens) |
+| **Antigravity** | `.agent/` | Full rules with activation types, workflows |
+
+Both IDEs share the same skills and capabilities, optimized for each platform's architecture.
+
+---
+
+## Installation
+
+### Using CLI (Recommended)
+
+```bash
+# Navigate to your project
+cd your-project
+
+# Install for both IDEs (recommended)
+npx @duck4nh/antigravity-kit init
+
+# Or specify target IDE
+npx @duck4nh/antigravity-kit init --ide opencode
+npx @duck4nh/antigravity-kit init --ide antigravity
+npx @duck4nh/antigravity-kit init --ide both
+```
+
+### CLI Commands
+
+| Command | Description |
+|---------|-------------|
+| `npx @duck4nh/antigravity-kit init` | Install into current directory |
+| `npx @duck4nh/antigravity-kit update` | Update to the latest version |
+| `npx @duck4nh/antigravity-kit status` | Check installation status |
+
+### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `-i, --ide <target>` | Target IDE: `antigravity`, `opencode`, or `both` |
+| `-f, --force` | Overwrite existing installation |
+| `-p, --path <dir>` | Custom project path |
+| `-b, --branch <name>` | Use specific branch |
+
+---
+
+## Skills
+
+Skills are domain-specific expertise modules loaded on-demand by the agent.
 
 ### Frontend
 
@@ -50,6 +95,7 @@ Skills are domain-specific expertise modules. The agent automatically identifies
 | `css-expert` | CSS architecture, responsive, design systems |
 | `state-management-expert` | Redux, Zustand, React Query |
 | `ui-ux-pro-max` | 50 styles, 21 palettes, 50 font pairings |
+| `accessibility-expert` | WCAG compliance, a11y testing |
 
 ### Backend
 
@@ -86,127 +132,141 @@ Skills are domain-specific expertise modules. The agent automatically identifies
 | `docker-expert` | Containerization, Compose |
 | `github-actions-expert` | GitHub Actions workflows |
 | `git-expert` | Git workflows, conflicts |
+| `typescript-expert` | TypeScript patterns, type system |
 
-### Code Quality
+### Workflow Modes
 
 | Skill | Description |
 |-------|-------------|
-| `code-review` | Comprehensive code review |
-| `refactoring-expert` | Code smell detection, refactoring |
-| `typescript-expert` | TypeScript patterns, type system |
-| `accessibility-expert` | WCAG compliance, a11y |
+| `mode-consulting` | Compare options, make recommendations |
+| `mode-build` | Create features, components, modules |
+| `mode-debug` | Fix bugs, analyze root cause |
+| `mode-optimize` | Refactor, improve performance |
+| `mode-learn` | Explain concepts, code, architecture |
+| `mode-review` | Code review, security audit |
+| `mode-migrate` | Version upgrades, stack migrations |
 
 ---
 
-## 📏 Rules
+## Rules
 
-Rules are guidelines that direct agent behavior. There are 3 activation types:
+Rules are guidelines that direct agent behavior (Antigravity only).
 
-- **always_on** - Always applied
-- **model_decision** - Agent decides when to apply
-- **glob** - Applied based on file pattern
+### Activation Types
+
+| Type | Description |
+|------|-------------|
+| `always_on` | Always applied |
+| `model_decision` | Agent decides when to apply |
 
 ### Rules List
 
-| # | File | Activation | Description |
-|---|------|------------|-------------|
-| 1 | `01-identity.md` | Always On | Role & working principles |
-| 2 | `02-task-classification.md` | Always On | 4 task types classification |
-| 3 | `03-mode-consulting.md` | Model Decision | Consulting process |
-| 4 | `04-mode-build.md` | Model Decision | Build process |
-| 5 | `05-mode-debug.md` | Model Decision | Debug process |
-| 6 | `06-mode-optimize.md` | Model Decision | Optimization process |
-| 7 | `07-technical-standards.md` | Always On | Coding standards |
-| 8 | `08-communication.md` | Always On | Communication style |
-| 9 | `09-checklist.md` | Always On | Pre-delivery checklist |
-| 10 | `10-special-situations.md` | Always On | Special situation handling |
+| File | Activation | Description |
+|------|------------|-------------|
+| `01-identity.md` | Always On | Role & working principles |
+| `02-task-classification.md` | Always On | Task types classification |
+| `03-mode-consulting.md` | Model Decision | Consulting process |
+| `04-mode-build.md` | Model Decision | Build process |
+| `05-mode-debug.md` | Model Decision | Debug process |
+| `06-mode-optimize.md` | Model Decision | Optimization process |
+| `07-mode-learn.md` | Model Decision | Learning/explaining process |
+| `08-mode-review.md` | Model Decision | Code review process |
+| `09-mode-migrate.md` | Model Decision | Migration process |
+| `10-technical-standards.md` | Always On | Coding standards |
+| `11-communication.md` | Always On | Communication style |
+| `12-checklist.md` | Always On | Pre-delivery checklist |
+| `13-special-situations.md` | Always On | Edge case handling |
 
 ---
 
-## 🔄 Workflows
+## Usage
 
-Workflows are step-by-step procedures. Invoke with slash command `/workflow-name`.
+### OpenCode
 
-| Workflow | Command | Description |
-|----------|---------|-------------|
-| Request Handler | `/request` | Full-stack engineer task handling |
-| UI/UX Pro Max | `/ui-ux-pro-max` | Design UI with 50 styles, 21 palettes |
-
----
-
-## 📦 Installation
-
-### Using CLI (Recommended)
-
-Install the `.agent` folder directly into your project using `npx`:
-
-```bash
-# Navigate to your project
-cd your-project
-
-# Install .agent folder
-npx @vudovn/antigravity-kit init
-```
-
-#### CLI Commands
-
-| Command | Description |
-|---------|-------------|
-| `npx @vudovn/antigravity-kit init` | Install `.agent` folder into current directory |
-| `npx @vudovn/antigravity-kit update` | Update `.agent` to the latest version |
-| `npx @vudovn/antigravity-kit status` | Check installation status |
-
----
-
-## 🚀 Usage
-
-### Skills
-
-Skills are automatically applied. The agent reads the skill when it identifies a related task:
+Skills are automatically loaded when the agent identifies a related task:
 
 ```
 User: "Fix bug in this React component"
-Agent: (automatically uses react-expert skill)
+Agent: (loads react-expert skill on-demand)
 ```
 
-### Rules
+**Tips:**
+- Press **Tab** to switch between Build and Plan modes
+- AGENTS.md contains core rules (~2500 tokens for minimal context)
+- Skills loaded on-demand to save context
+
+### Antigravity
 
 Rules apply based on activation type:
 - **always_on**: Always active
 - **model_decision**: Agent decides when to apply
-- **glob**: Applied when working with files matching pattern
 
-### Workflows
+Skills are available in `.agent/skills/` and loaded automatically.
 
-Invoke workflows with slash commands:
+---
+
+## Project Structure
 
 ```
-User: Prompt
-Agent: (follows the workflow)
+your-project/
+├── .opencode/                  # OpenCode configuration
+│   ├── opencode.json           # Config file
+│   └── skill/                  # 42+ skills
+│       ├── react-expert/
+│       ├── typescript-expert/
+│       └── ...
+├── .agent/                     # Antigravity configuration
+│   ├── rules/                  # 13 rule files
+│   ├── skills/                 # 35+ skills
+│   └── workflows/              # Workflow definitions
+├── shared/                     # Shared resources
+│   └── ui-ux-pro-max/          # UI/UX design data
+│       ├── data/               # CSV databases
+│       └── scripts/            # Search scripts
+└── AGENTS.md                   # Core rules for OpenCode
 ```
 
 ---
 
-## 🙏 Credits
+## Credits
 
 This project is built upon and inspired by:
 
 | Project | Description | Link |
 |---------|-------------|------|
-| **UI UX Pro Max** | Design Intelligence for Claude Code - 50 styles, 21 color palettes, 50 font pairings, 20 chart types | [ui-ux-pro-max-skill.nextlevelbuilder.io](https://ui-ux-pro-max-skill.nextlevelbuilder.io/) |
-| **ClaudeKit** | Production-ready AI subagents, workflows, and integrations for software development | [claudekit.cc](https://claudekit.cc/) |
-
-Special thanks to the creators of these amazing tools for making AI-assisted development more powerful and accessible.
+| **UI UX Pro Max** | Design Intelligence - 50 styles, 21 palettes, 50 font pairings | [ui-ux-pro-max-skill.nextlevelbuilder.io](https://ui-ux-pro-max-skill.nextlevelbuilder.io/) |
+| **ClaudeKit** | Production-ready AI subagents and workflows | [claudekit.cc](https://claudekit.cc/) |
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 ### Adding a New Skill
 
-1. Create folder: `.agent/skills/your-skill/`
-2. Create `SKILL.md` with format:
+1. Create folder in both locations:
+   - `.opencode/skill/your-skill/SKILL.md`
+   - `.agent/skills/your-skill/SKILL.md`
 
+2. Use correct frontmatter:
+
+**OpenCode format:**
+```markdown
+---
+name: your-skill
+description: >-
+  Skill description (max 1024 chars). Explain when to use this skill.
+license: MIT
+compatibility: opencode
+metadata:
+  category: frontend
+---
+
+# Your Skill
+
+Instructions for the agent...
+```
+
+**Antigravity format:**
 ```markdown
 ---
 name: your-skill
@@ -218,16 +278,15 @@ description: Skill description. Use when X or Y.
 Instructions for the agent...
 ```
 
-### Adding a New Rule
+### Adding a New Rule (Antigravity only)
 
-1. Create file: `.agent/rules/your-rule.md`
+1. Create file: `.agent/rules/XX-your-rule.md`
 2. Add frontmatter:
 
 ```markdown
 ---
-activation: always_on | model_decision | glob
-glob: "**/*.tsx"  # if using glob
-description: When to apply  # if using model_decision
+activation: always_on | model_decision
+description: When to apply (if model_decision)
 ---
 
 # Your Rule
@@ -235,36 +294,14 @@ description: When to apply  # if using model_decision
 Content...
 ```
 
-### Adding a New Workflow
-
-1. Create file: `.agent/workflows/your-workflow.md`
-2. Format:
-
-```markdown
----
-description: Workflow description
 ---
 
-# Your Workflow
-
-## Step 1: ...
-## Step 2: ...
-```
-
----
-
-## 📄 License
+## License
 
 MIT License - See [LICENSE](LICENSE) for details.
 
 ---
 
 <p align="center">
-  Made with ❤️ by <a href="https://github.com/vudovn">VudoVN</a>
-</p>
-
-<p align="center">
-  <a href="https://img.vietqr.io/image/mbbank-0779440918-compact2.jpg">
-    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me a Coffee" />
-  </a>
+  Made with by <a href="https://github.com/duck4nh">duck4nh</a>
 </p>

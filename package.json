@@ -1,11 +1,15 @@
 {
-  "name": "@vudovn/antigravity-kit",
-  "version": "1.0.1",
-  "description": "CLI tool to setup Antigravity Kit skills and MCPs",
+  "name": "@duck4nh/antigravity-kit",
+  "version": "2.0.1",
+  "description": "CLI tool to setup Antigravity Kit skills for Antigravity and OpenCode IDEs",
   "main": "bin/index.js",
   "type": "module",
   "bin": {
-    "ag-kit": "./bin/index.js"
+    "antigravity": "./bin/index.js"
+  },
+  "scripts": {
+    "ship-it": "npm version patch && npm publish --access public && git push origin main --tags",
+    "update": "npm run build && npm run ship-it"
   },
   "files": [
     "bin",
@@ -13,11 +17,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vudovn/antigravity-kit.git"
+    "url": "git+https://github.com/duck4nh/antigravity-kit.git"
   },
-  "homepage": "https://github.com/vudovn/antigravity-kit#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/duck4nh/antigravity-kit#readme",
   "bugs": {
-    "url": "https://github.com/vudovn/antigravity-kit/issues"
+    "url": "https://github.com/duck4nh/antigravity-kit/issues"
   },
   "keywords": [
     "antigravity",
@@ -27,7 +34,7 @@
     "gemini",
     "skills"
   ],
-  "author": "Do Van Vu",
+  "author": "duck4nh",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.6.2",

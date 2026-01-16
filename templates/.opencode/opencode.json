@@ -1,0 +1,23 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": ["../AGENTS.md"],
+  "agent": {
+    "build": {
+      "description": "Build mode - create features, components, and modules with full tool access",
+      "mode": "primary"
+    },
+    "plan": {
+      "description": "Plan mode - analyze, compare options, review without making changes",
+      "mode": "primary",
+      "permission": {
+        "edit": "deny",
+        "bash": "ask"
+      }
+    }
+  },
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
+  }
+}
