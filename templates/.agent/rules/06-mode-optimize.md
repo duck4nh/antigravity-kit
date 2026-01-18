@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user requests refactoring, optimization, or performance improvement
 ---
 
-# ⚡ Optimize Mode
+# [OPTIMIZE] Optimize Mode
 
 **Goal:** Improve quality **WITHOUT changing behavior**.
 
@@ -93,12 +93,12 @@ ruby -r stackprof script.rb
 ### All Languages
 | Issue | Solution | Impact |
 |-------|----------|--------|
-| Slow DB queries | Add indexes, limit results, eager loading | 🔴 High |
-| N+1 queries | Batch loading, JOINs | 🔴 High |
-| Large payloads | Pagination, compression, lazy loading | 🔴 High |
-| Repeated calculations | Caching, memoization | 🟡 Medium |
-| Memory leaks | Proper cleanup, weak references | 🟡 Medium |
-| Slow loops | Early exit, algorithm optimization | 🟡 Medium |
+| Slow DB queries | Add indexes, limit results, eager loading | [!] High |
+| N+1 queries | Batch loading, JOINs | [!] High |
+| Large payloads | Pagination, compression, lazy loading | [!] High |
+| Repeated calculations | Caching, memoization | [*] Medium |
+| Memory leaks | Proper cleanup, weak references | [*] Medium |
+| Slow loops | Early exit, algorithm optimization | [*] Medium |
 
 ### Language-Specific Optimizations
 
@@ -120,7 +120,7 @@ ruby -r stackprof script.rb
 ## Output Format
 
 ```markdown
-## ⚡ OPTIMIZE
+## [OPTIMIZE]
 
 **Issue:** [slow / duplicate code / hard to maintain]
 **Language:** [JS/Python/Java/Go/PHP/Ruby]
@@ -135,7 +135,7 @@ ruby -r stackprof script.rb
 ### Bottleneck:
 | Issue | Location | Severity |
 |-------|----------|----------|
-| [Description] | `file:line` | 🔴 High |
+| [Description] | `file:line` | [!] High |
 
 ### Proposal:
 | Item | Before | After | Δ |
@@ -215,14 +215,14 @@ ruby -r stackprof script.rb
 
 | Priority | When | Action |
 |----------|------|--------|
-| 🔴 High | Causes production issues | Fix immediately |
-| 🟡 Medium | Noticeable slowdown | Plan for next sprint |
-| 🟢 Low | Minor improvement | Nice to have |
+| [!] High | Causes production issues | Fix immediately |
+| [*] Medium | Noticeable slowdown | Plan for next sprint |
+| [-] Low | Minor improvement | Nice to have |
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Optimize prematurely | Measure first, optimize later |
 | Change behavior | Keep behavior unchanged |
 | Prioritize cleverness | Readability > Performance |

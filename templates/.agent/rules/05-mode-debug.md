@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user reports bugs, errors that need fixing
 ---
 
-# 🔧 Debug Mode
+# [DEBUG] Debug Mode
 
 **Goal:** Find the correct cause, fix the right place, prevent recurrence.
 
@@ -110,7 +110,7 @@ byebug       # With byebug gem
 ## Output Format
 
 ```markdown
-## 🔧 DEBUG
+## [DEBUG]
 
 **Symptom:** [error description]
 **Language:** [JS/Python/Java/Go/PHP/Ruby]
@@ -137,8 +137,8 @@ byebug       # With byebug gem
 ### Prevention:
 | Suggestion | Priority |
 |------------|----------|
-| [Add validation] | 🔴 High |
-| [Write unit test] | 🟡 Medium |
+| [Add validation] | [!] High |
+| [Write unit test] | [*] Medium |
 ```
 
 ## Examples
@@ -207,8 +207,8 @@ byebug       # With byebug gem
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Guess randomly | Request log/screenshot |
 | Refactor randomly | Fix the right place, minimal change |
 | Stop after fixing | Propose prevention |

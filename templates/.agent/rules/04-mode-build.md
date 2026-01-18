@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user requests creating new feature, component, or module
 ---
 
-# 🏗️ Build Mode
+# [BUILD] Build Mode
 
 **Goal:** Create new code that meets standards and is maintainable.
 
@@ -93,7 +93,7 @@ app/
 ## Output Format
 
 ```markdown
-## 🏗️ BUILD: [Feature name]
+## [BUILD]: [Feature name]
 
 **Scope:** [description]
 **Language:** [JS/Python/Java/Go/PHP/Ruby]
@@ -112,7 +112,7 @@ app/
 
 ---
 
-### ✅ Checklist:
+### Checklist:
 - [x] Type-safe / properly typed
 - [x] Complete error handling
 - [x] No hardcoded values
@@ -246,8 +246,8 @@ end
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Add features outside scope | Do exactly what's requested |
 | Use loose typing (`any`, `Object`, `interface{}`) | Declare types completely |
 | Hardcode values | Use constants/config/env |

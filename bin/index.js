@@ -3,22 +3,26 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import ora from 'ora';
-import { downloadTemplate } from 'giget';
 import path from 'path';
 import fs from 'fs';
 import readline from 'readline';
+import { fileURLToPath } from 'url';
 
 // ============================================================================
 // CONSTANTS
 // ============================================================================
 
-const REPO = 'github:duck4nh/antigravity-kit';
-const TEMPLATES_FOLDER = 'templates';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Templates are bundled with the npm package
+const PACKAGE_ROOT = path.resolve(__dirname, '..');
+const TEMPLATES_FOLDER = path.join(PACKAGE_ROOT, 'templates');
+
 const AGENT_FOLDER = '.agent';
 const OPENCODE_FOLDER = '.opencode';
 const SHARED_FOLDER = 'shared';
 const AGENTS_MD = 'AGENTS.md';
-const TEMP_FOLDER = '.temp_ag_kit';
 
 // IDE options
 const IDE_OPTIONS = {
@@ -37,7 +41,7 @@ const IDE_OPTIONS = {
 const showBanner = () => {
     console.log(chalk.blueBright(`
     ╔══════════════════════════════════════╗
-    ║      ANTIGRAVITY KIT CLI v2.0        ║
+    ║      ANTIGRAVITY KIT CLI v2.1        ║
     ║   Supports: Antigravity + OpenCode   ║
     ╚══════════════════════════════════════╝
     `));
@@ -98,17 +102,7 @@ const selectIDE = () => {
 };
 
 /**
- * Clean up temporary directory
- * @param {string} tempDir - Temp directory path
- */
-const cleanup = (tempDir) => {
-    if (fs.existsSync(tempDir)) {
-        fs.rmSync(tempDir, { recursive: true, force: true });
-    }
-};
-
-/**
- * Copy folder from temp to destination
+ * Copy folder recursively
  * @param {string} source - Source directory
  * @param {string} dest - Destination directory
  */
@@ -120,7 +114,7 @@ const copyFolder = (source, dest) => {
 };
 
 /**
- * Copy file from source to destination
+ * Copy file
  * @param {string} source - Source file
  * @param {string} dest - Destination file
  */
@@ -133,11 +127,10 @@ const copyFile = (source, dest) => {
 
 /**
  * Install for Antigravity IDE
- * @param {string} tempDir - Temp directory
  * @param {string} targetDir - Target directory
  */
-const installAntigravity = (tempDir, targetDir) => {
-    const sourceAgent = path.join(tempDir, TEMPLATES_FOLDER, AGENT_FOLDER);
+const installAntigravity = (targetDir) => {
+    const sourceAgent = path.join(TEMPLATES_FOLDER, AGENT_FOLDER);
     const destAgent = path.join(targetDir, AGENT_FOLDER);
     
     copyFolder(sourceAgent, destAgent);
@@ -147,13 +140,12 @@ const installAntigravity = (tempDir, targetDir) => {
 
 /**
  * Install for OpenCode IDE
- * @param {string} tempDir - Temp directory
  * @param {string} targetDir - Target directory
  */
-const installOpenCode = (tempDir, targetDir) => {
-    const sourceOpencode = path.join(tempDir, TEMPLATES_FOLDER, OPENCODE_FOLDER);
-    const sourceAgentsMd = path.join(tempDir, TEMPLATES_FOLDER, AGENTS_MD);
-    const sourceShared = path.join(tempDir, TEMPLATES_FOLDER, SHARED_FOLDER);
+const installOpenCode = (targetDir) => {
+    const sourceOpencode = path.join(TEMPLATES_FOLDER, OPENCODE_FOLDER);
+    const sourceAgentsMd = path.join(TEMPLATES_FOLDER, AGENTS_MD);
+    const sourceShared = path.join(TEMPLATES_FOLDER, SHARED_FOLDER);
     
     const destOpencode = path.join(targetDir, OPENCODE_FOLDER);
     const destAgentsMd = path.join(targetDir, AGENTS_MD);
@@ -184,7 +176,15 @@ const initCommand = async (options) => {
     showBanner();
 
     const targetDir = path.resolve(options.path || process.cwd());
-    const tempDir = path.join(targetDir, TEMP_FOLDER);
+    
+    // Verify templates exist
+    if (!fs.existsSync(TEMPLATES_FOLDER)) {
+        console.log(chalk.red(`Error: Templates folder not found at: ${TEMPLATES_FOLDER}`));
+        console.log(chalk.yellow('This might be a package installation issue. Try reinstalling:'));
+        console.log(chalk.cyan('  npm cache clean --force'));
+        console.log(chalk.cyan('  npx @duck4nh/antigravity-kit@latest init'));
+        process.exit(1);
+    }
     
     // Determine IDE target
     let ideTarget = options.ide;
@@ -193,6 +193,7 @@ const initCommand = async (options) => {
     }
     
     console.log(chalk.gray(`\nTarget IDE(s): ${chalk.cyan(ideTarget)}`));
+    console.log(chalk.gray(`Installing to: ${chalk.cyan(targetDir)}`));
     
     // Check existing folders
     const agentDir = path.join(targetDir, AGENT_FOLDER);
@@ -221,39 +222,27 @@ const initCommand = async (options) => {
     }
 
     const spinner = ora({
-        text: 'Downloading from repository...',
+        text: 'Installing files from npm package...',
         color: 'cyan',
     }).start();
 
     try {
-        // Download repository using giget
-        const repoSource = options.branch ? `${REPO}#${options.branch}` : REPO;
-        await downloadTemplate(repoSource, {
-            dir: tempDir,
-            force: true,
-        });
-
-        spinner.text = 'Installing files...';
-        
         const installedPaths = [];
         
         // Install based on IDE target
         if (ideTarget === IDE_OPTIONS.antigravity || ideTarget === IDE_OPTIONS.both) {
-            const destAgent = installAntigravity(tempDir, targetDir);
+            const destAgent = installAntigravity(targetDir);
             installedPaths.push(`${AGENT_FOLDER} → ${destAgent}`);
         }
         
         if (ideTarget === IDE_OPTIONS.opencode || ideTarget === IDE_OPTIONS.both) {
-            const { destOpencode, destAgentsMd, destShared } = installOpenCode(tempDir, targetDir);
+            const { destOpencode, destAgentsMd, destShared } = installOpenCode(targetDir);
             installedPaths.push(`${OPENCODE_FOLDER} → ${destOpencode}`);
             installedPaths.push(`${AGENTS_MD} → ${destAgentsMd}`);
-            if (fs.existsSync(destShared)) {
+            if (fs.existsSync(path.join(targetDir, SHARED_FOLDER))) {
                 installedPaths.push(`${SHARED_FOLDER} → ${destShared}`);
             }
         }
-
-        // Cleanup
-        cleanup(tempDir);
 
         spinner.succeed(chalk.green('Installation successful!'));
 
@@ -281,7 +270,6 @@ const initCommand = async (options) => {
         console.log(chalk.green('\nHappy coding!\n'));
     } catch (error) {
         spinner.fail(chalk.red(`Error: ${error.message}`));
-        cleanup(tempDir);
         process.exit(1);
     }
 };
@@ -302,7 +290,7 @@ const updateCommand = async (options) => {
     
     if (!hasAgent && !hasOpencode) {
         console.log(chalk.red(`No existing installation found at: ${targetDir}`));
-        console.log(chalk.yellow(`Tip: Run ${chalk.cyan('antigravity init')} to install first.`));
+        console.log(chalk.yellow(`Tip: Run ${chalk.cyan('npx @duck4nh/antigravity-kit init')} to install first.`));
         process.exit(1);
     }
 
@@ -393,9 +381,9 @@ const statusCommand = (options) => {
     console.log(chalk.gray('\n────────────────────────────────────────'));
     
     if (!fs.existsSync(agentDir) && !fs.existsSync(opencodeDir)) {
-        console.log(chalk.yellow(`\nTip: Run ${chalk.cyan('antigravity init')} to install.\n`));
+        console.log(chalk.yellow(`\nTip: Run ${chalk.cyan('npx @duck4nh/antigravity-kit init')} to install.\n`));
     } else {
-        console.log(chalk.gray(`\nTip: Run ${chalk.cyan('antigravity update')} to update to latest version.\n`));
+        console.log(chalk.gray(`\nTip: Run ${chalk.cyan('npx @duck4nh/antigravity-kit update')} to update to latest version.\n`));
     }
 };
 
@@ -406,9 +394,9 @@ const statusCommand = (options) => {
 const program = new Command();
 
 program
-    .name('antigravity')
+    .name('antigravity-kit')
     .description('CLI tool to install and manage Antigravity Kit for multiple IDEs')
-    .version('2.0.0', '-v, --version', 'Display version number');
+    .version('2.1.0', '-v, --version', 'Display version number');
 
 // Command: init
 program
@@ -416,7 +404,6 @@ program
     .description('Install agent configuration into your project')
     .option('-f, --force', 'Overwrite if folders already exist', false)
     .option('-p, --path <dir>', 'Path to the project directory', process.cwd())
-    .option('-b, --branch <name>', 'Select repository branch')
     .option('-i, --ide <target>', 'Target IDE: antigravity, opencode, or both')
     .action(initCommand);
 
@@ -426,7 +413,6 @@ program
     .description('Update installation to the latest version')
     .option('-f, --force', 'Skip confirmation prompt', false)
     .option('-p, --path <dir>', 'Path to the project directory', process.cwd())
-    .option('-b, --branch <name>', 'Select repository branch')
     .option('-i, --ide <target>', 'Target IDE: antigravity, opencode, or both')
     .action(updateCommand);
 

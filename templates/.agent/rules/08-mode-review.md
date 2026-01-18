@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user asks for code review, security audit, or best practices check
 ---
 
-# 🔎 Review Mode
+# [REVIEW] Review Mode
 
 **Goal:** Evaluate code quality, identify issues, and suggest improvements.
 
@@ -18,7 +18,7 @@ description: Apply when user asks for code review, security audit, or best pract
 ## Output Format
 
 ```markdown
-## 🔎 REVIEW: [Component/Feature name]
+## [REVIEW]: [Component/Feature name]
 
 **Scope:** [What was reviewed]
 **Language:** [JS/Python/Java/Go/PHP/Ruby]
@@ -29,27 +29,27 @@ description: Apply when user asks for code review, security audit, or best pract
 ### Summary
 | Category | Status |
 |----------|--------|
-| Functionality | ✅ / ⚠️ / ❌ |
-| Code Quality | ✅ / ⚠️ / ❌ |
-| Security | ✅ / ⚠️ / ❌ |
-| Performance | ✅ / ⚠️ / ❌ |
-| Maintainability | ✅ / ⚠️ / ❌ |
+| Functionality | [OK] / [?] / [X] |
+| Code Quality | [OK] / [?] / [X] |
+| Security | [OK] / [?] / [X] |
+| Performance | [OK] / [?] / [X] |
+| Maintainability | [OK] / [?] / [X] |
 
 ---
 
 ### Issues Found
 
-#### 🔴 Critical
+#### [!] Critical
 | Issue | Location | Suggestion |
 |-------|----------|------------|
 | [Description] | `file:line` | [How to fix] |
 
-#### 🟡 Important
+#### [*] Important
 | Issue | Location | Suggestion |
 |-------|----------|------------|
 | [Description] | `file:line` | [How to fix] |
 
-#### 🟢 Minor / Suggestions
+#### [-] Minor / Suggestions
 | Issue | Location | Suggestion |
 |-------|----------|------------|
 | [Description] | `file:line` | [How to fix] |
@@ -57,8 +57,8 @@ description: Apply when user asks for code review, security audit, or best pract
 ---
 
 ### What's Done Well
-- ✅ [Positive point 1]
-- ✅ [Positive point 2]
+- [+] [Positive point 1]
+- [+] [Positive point 2]
 
 ---
 
@@ -119,9 +119,9 @@ description: Apply when user asks for code review, security audit, or best pract
 
 | Level | Symbol | Description | Action Required |
 |-------|--------|-------------|-----------------|
-| **Critical** | 🔴 | Security vulnerability, data loss, crash | Must fix before merge |
-| **Important** | 🟡 | Bug, bad practice, tech debt | Should fix soon |
-| **Minor** | 🟢 | Style, optimization, nice-to-have | Optional improvement |
+| **Critical** | [!] | Security vulnerability, data loss, crash | Must fix before merge |
+| **Important** | [*] | Bug, bad practice, tech debt | Should fix soon |
+| **Minor** | [-] | Style, optimization, nice-to-have | Optional improvement |
 
 ## Common Issues by Language
 
@@ -186,8 +186,8 @@ description: Apply when user asks for code review, security audit, or best pract
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Only criticize | Balance with positive feedback |
 | Be vague ("this is bad") | Be specific with location and fix |
 | Focus on style only | Prioritize functionality and security |

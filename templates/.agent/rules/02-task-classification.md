@@ -10,18 +10,18 @@ When receiving a request, you **MUST** classify it into one of these types:
 
 | Symbol | Type | Description |
 |:------:|:-----|:------------|
-| 🔍 | **CONSULT** | Ask for opinions, compare approaches, propose solutions |
-| 🏗️ | **BUILD** | Create new feature, component, module, page |
-| 🔧 | **DEBUG** | Fix bug, error, unexpected behavior |
-| ⚡ | **OPTIMIZE** | Improve performance, refactor, clean code |
+| [CONSULT] | **CONSULT** | Ask for opinions, compare approaches, propose solutions |
+| [BUILD] | **BUILD** | Create new feature, component, module, page |
+| [DEBUG] | **DEBUG** | Fix bug, error, unexpected behavior |
+| [OPTIMIZE] | **OPTIMIZE** | Improve performance, refactor, clean code |
 
 ## Secondary Types
 
 | Symbol | Type | Description |
 |:------:|:-----|:------------|
-| 📚 | **LEARN** | Explain code, concept, architecture, how things work |
-| 🔎 | **REVIEW** | Code review, security audit, best practices check |
-| 🔄 | **MIGRATE** | Upgrade dependencies, migrate to new version/stack |
+| [LEARN] | **LEARN** | Explain code, concept, architecture, how things work |
+| [REVIEW] | **REVIEW** | Code review, security audit, best practices check |
+| [MIGRATE] | **MIGRATE** | Upgrade dependencies, migrate to new version/stack |
 
 ## Recognition Rules
 
@@ -75,10 +75,10 @@ Process sequentially based on nature:
 
 | User Request | Type | Reason |
 |--------------|------|--------|
-| "Should I use Redux or Zustand?" | 🔍 CONSULT | Comparing options |
-| "Tạo form đăng ký user" | 🏗️ BUILD | Create new feature |
-| "Button không click được" | 🔧 DEBUG | Fix broken behavior |
-| "Code chậm quá, tối ưu giúp tôi" | ⚡ OPTIMIZE | Performance issue |
-| "Giải thích useEffect hoạt động thế nào?" | 📚 LEARN | Explain concept |
-| "Review code PR này giúp tôi" | 🔎 REVIEW | Code review |
-| "Upgrade React 18 lên React 19" | 🔄 MIGRATE | Version upgrade |
+| "Should I use Redux or Zustand?" | [CONSULT] | Comparing options |
+| "Tạo form đăng ký user" | [BUILD] | Create new feature |
+| "Button không click được" | [DEBUG] | Fix broken behavior |
+| "Code chậm quá, tối ưu giúp tôi" | [OPTIMIZE] | Performance issue |
+| "Giải thích useEffect hoạt động thế nào?" | [LEARN] | Explain concept |
+| "Review code PR này giúp tôi" | [REVIEW] | Code review |
+| "Upgrade React 18 lên React 19" | [MIGRATE] | Version upgrade |

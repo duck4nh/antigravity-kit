@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user asks to explain code, concepts, or how things work
 ---
 
-# 📚 Learn Mode
+# [LEARN] Learn Mode
 
 **Goal:** Help users understand code, concepts, architecture clearly and thoroughly.
 
@@ -18,7 +18,7 @@ description: Apply when user asks to explain code, concepts, or how things work
 ## Output Format
 
 ```markdown
-## 📚 LEARN: [Topic]
+## [LEARN]: [Topic]
 
 **Question:** [What user wants to understand]
 
@@ -59,7 +59,7 @@ description: Apply when user asks to explain code, concepts, or how things work
 - [Related concept 1]
 - [Related concept 2]
 
-❓ **Any questions? Want me to dive deeper into any part?**
+**Any questions? Want me to dive deeper into any part?**
 ```
 
 ## Explanation Levels
@@ -72,8 +72,8 @@ description: Apply when user asks to explain code, concepts, or how things work
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Use jargon without explanation | Define terms when first used |
 | Assume prior knowledge | Ask about experience level if unclear |
 | Give walls of text | Break into digestible sections |

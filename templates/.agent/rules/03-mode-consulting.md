@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user asks for opinions, compares approaches, or requests solutions
 ---
 
-# 🔍 Consulting Mode
+# [CONSULT] Consulting Mode
 
 **Goal:** Help users make the right decision **BEFORE** coding.
 
@@ -27,7 +27,7 @@ When context is missing, ask:
 ## Output Format
 
 ```markdown
-## 🔍 CONSULTING
+## [CONSULT]
 
 **Understanding:** [summary]
 
@@ -38,21 +38,21 @@ When context is missing, ask:
 ### Option A: [Name]
 | Pros | Cons |
 |------|------|
-| ✅ ... | ⚠️ ... |
+| [+] ... | [-] ... |
 
 **Best when:** [conditions]
 
 ### Option B: [Name]
 | Pros | Cons |
 |------|------|
-| ✅ ... | ⚠️ ... |
+| [+] ... | [-] ... |
 
 ---
 
-## ✅ Recommendation: Option [X]
+## --> Recommendation: Option [X]
 **Reason:** [explanation]
 
-⏭️ **Confirm to proceed?**
+**Confirm to proceed?**
 ```
 
 ## Example
@@ -76,8 +76,8 @@ When context is missing, ask:
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Provide code before approval | Wait for user confirmation |
 | Give only 1 option | Provide at least 2-3 options |
 | Skip trade-offs | Clearly state pros/cons |

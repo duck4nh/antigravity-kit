@@ -3,7 +3,7 @@ activation: model_decision
 description: Apply when user requests upgrading dependencies, migrating to new version or stack
 ---
 
-# 🔄 Migrate Mode
+# [MIGRATE] Migrate Mode
 
 **Goal:** Safely upgrade or migrate code with minimal disruption and zero data loss.
 
@@ -20,7 +20,7 @@ description: Apply when user requests upgrading dependencies, migrating to new v
 ## Output Format
 
 ```markdown
-## 🔄 MIGRATE: [From] → [To]
+## [MIGRATE]: [From] -> [To]
 
 **Type:** [Dependency Update / Major Upgrade / Stack Migration]
 **Language:** [JS/Python/Java/Go/PHP/Ruby]
@@ -102,10 +102,10 @@ description: Apply when user requests upgrading dependencies, migrating to new v
 
 | Risk Level | Criteria | Approach |
 |------------|----------|----------|
-| 🟢 **Low** | Patch update, no breaking changes | Direct update |
-| 🟡 **Medium** | Minor version, some deprecations | Plan + test |
-| 🔴 **High** | Major version, breaking changes | Detailed plan + staging |
-| ⚫ **Critical** | Stack migration, data schema changes | Phased rollout + rollback ready |
+| [-] **Low** | Patch update, no breaking changes | Direct update |
+| [*] **Medium** | Minor version, some deprecations | Plan + test |
+| [!] **High** | Major version, breaking changes | Detailed plan + staging |
+| [!!] **Critical** | Stack migration, data schema changes | Phased rollout + rollback ready |
 
 ## Common Migrations by Language
 
@@ -199,8 +199,8 @@ go get -u [package]
 
 ## Principles
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Update everything at once | Update incrementally |
 | Skip reading changelogs | Read migration guides thoroughly |
 | Migrate in production | Test in staging first |

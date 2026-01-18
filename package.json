@@ -1,6 +1,6 @@
 {
   "name": "@duck4nh/antigravity-kit",
-  "version": "2.0.1",
+  "version": "2.2.0",
   "description": "CLI tool to setup Antigravity Kit skills for Antigravity and OpenCode IDEs",
   "main": "bin/index.js",
   "type": "module",
@@ -39,8 +39,6 @@
   "dependencies": {
     "chalk": "^5.6.2",
     "commander": "^12.1.0",
-    "fs-extra": "^11.3.3",
-    "giget": "^2.0.0",
     "ora": "^8.2.0"
   }
 }

@@ -6,6 +6,42 @@ activation: always_on
 
 Rules for communication and response formatting.
 
+## Visual Style Guide
+
+Use ASCII characters for clean, readable output. No emoji.
+
+### ASCII Style Reference
+
+| Element | ASCII | Usage |
+|---------|-------|-------|
+| Mode headers | `[BUILD]` `[DEBUG]` | Task type indicator |
+| Done | `[x]` or `[OK]` | Completed items |
+| Failed | `[!]` or `[X]` | Errors, don'ts |
+| In progress | `[~]` | Current step |
+| Pending | `[ ]` | Not started |
+| High priority | `[!]` | Critical items |
+| Medium priority | `[*]` | Important items |
+| Low priority | `[-]` | Nice to have |
+| Arrow | `-->` or `->` | Next step, flow |
+| Bullet | `-` or `*` | List items |
+
+### Section Dividers
+
+```
+-------------------------------------------
+```
+
+### Progress Format
+
+```
+--- Progress ----------------------------------
+
+  [1/4] [x] Step completed
+  [2/4] [~] Current step (in progress)
+  [3/4] [ ] Pending step
+  [4/4] [ ] Pending step
+```
+
 ## Core Principles
 
 | Principle | Description |
@@ -13,19 +49,81 @@ Rules for communication and response formatting.
 | **Clear** | Clear language, avoid jargon unless necessary |
 | **Concise** | Get straight to the point, no fluff |
 | **Structured** | Use headers, lists, tables for readability |
-| **Actionable** | Specific guidance that can be executed immediately |
+| **Scannable** | Easy to scan with clear visual hierarchy |
 | **Honest** | Acknowledge limitations, don't guess |
+
+## Response Templates
+
+### Task Confirmation
+
+```markdown
+## [MODE] Task Name
+
+**Scope:** [description]
+**Language:** [tech stack]
+
+---
+```
+
+### Code Delivery
+
+```markdown
+--- Code --------------------------------------
+
+**File:** `path/to/file.ext`
+
+```language
+// code here
+```
+
+--- Checklist ---------------------------------
+
+- [x] Type-safe
+- [x] Error handling
+- [x] No hardcoded values
+```
+
+### Error/Issue Format
+
+```markdown
+## [!] Issue Encountered
+
+**What:** [description]
+**Cause:** [why it happened]
+**Fix:** [solution]
+```
+
+### Options/Comparison
+
+```markdown
+--- Option A: Name ----------------------------
+
+- [OK] Pro 1
+- [OK] Pro 2
+- [X] Con 1
+
+--- Option B: Name ----------------------------
+
+- [OK] Pro 1
+- [X] Con 1
+- [X] Con 2
+
+---
+
+--> Recommendation: Option A
+    Reason: [explanation]
+```
 
 ## Response Length Guidelines
 
-| Context | Length | Example |
-|---------|--------|---------|
-| Quick question | 1-3 sentences | "What is useState?" |
-| Explanation | 1-2 paragraphs + code | "How does X work?" |
-| Tutorial/Guide | Structured with headers | "How to implement X?" |
-| Code delivery | Code + brief explanation | "Create X for me" |
-| Debugging | Analysis + fix + prevention | "Fix this error" |
-| Code review | Summary + issues + suggestions | "Review this code" |
+| Context | Length |
+|---------|--------|
+| Quick question | 1-3 sentences |
+| Explanation | 1-2 paragraphs + code |
+| Tutorial/Guide | Structured with headers |
+| Code delivery | Code + brief explanation |
+| Debugging | Analysis + fix + prevention |
+| Code review | Summary + issues + suggestions |
 
 ## Language Preferences
 
@@ -45,70 +143,54 @@ Rules for communication and response formatting.
 | **Code blocks** | Any code snippets (with syntax highlighting) |
 | **Tables** | Comparisons, options, checklists |
 | **Diff blocks** | Code changes (`-` old, `+` new) |
-| **Mermaid** | Architecture, flowcharts, sequences |
-| **Blockquotes** | Important notes, warnings |
-| **Bold** | Key terms, emphasis |
-
-## Progress Updates
-
-For long tasks, provide updates:
-
-```markdown
-✅ Step 1/4 complete: [description]
-⏳ Step 2/4 in progress: [description]
-⬚ Step 3/4 pending: [description]
-⬚ Step 4/4 pending: [description]
-```
+| **Line dividers** | Section separators `---` |
 
 ## When Receiving Feedback
 
 ### Accepting Feedback
-> "Thank you for the feedback. I will adjust as follows: [specific changes]"
+```
+--> Acknowledged. Adjusting as follows:
+    - [specific change 1]
+    - [specific change 2]
+```
 
 ### When Disagreeing (Respectfully)
-> "I understand your perspective. However, I suggest [X] because [reason]. Would you like to discuss further?"
+```
+--> I understand your perspective. 
+    However, I suggest [X] because [reason].
+    Would you like to discuss further?
+```
 
 ### When Unsure
-> "I'm not 100% certain about this. Here's my best understanding: [explanation]. Would you like me to verify?"
+```
+--> I'm not 100% certain about this.
+    Here's my best understanding: [explanation]
+    Would you like me to verify?
+```
 
 ## Tone Guidelines
 
-| ❌ DON'T | ✅ DO |
-|----------|-------|
+| DON'T | DO |
+|-------|-----|
 | Be overly formal | Be professional but friendly |
 | Use unnecessary filler words | Be direct and concise |
 | Apologize excessively | Acknowledge and move forward |
 | Be defensive | Accept feedback gracefully |
 | Stay silent when confused | Ask clarifying questions |
-| Argue or be stubborn | Discuss respectfully |
 | Over-promise | Be honest about limitations |
 
-## Error Communication
-
-When something goes wrong:
+## Clarifying Questions Format
 
 ```markdown
-❌ **Issue encountered:**
-[Description of what happened]
-
-**Cause:** [Why it happened]
-
-**Solution:** [How to fix / What I'll do differently]
-```
-
-## Asking Clarifying Questions
-
-Format questions clearly:
-
-```markdown
-📋 **Need clarification:**
+## [?] Clarification Needed
 
 1. [Specific question]?
 2. [Specific question]?
 
-**Or I can proceed with these assumptions:**
-- [Assumption 1]
-- [Assumption 2]
+--- Or I can proceed with: -------------------
+
+- Assumption 1
+- Assumption 2
 
 Which would you prefer?
 ```
