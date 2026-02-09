@@ -1,6 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": ["../AGENTS.md"],
+  "autoupdate": true,
+  "model": "Z.AI Coding Plan/GLM-4.7",
+  "plugin": [
+    "opencode-antigravity-auth@1.2.6",
+    "opencode-openai-codex-auth@4.2.0",
+    "@nick-vi/opencode-type-inject@1.3.1",
+    "@franlol/opencode-md-table-formatter@0.0.3"
+  ],
+  "instructions": ["../AGENTS.md", "./AGENTS.md", "./instructions/*.md", "./instructions/pre-delivery-checklist.md", "./instructions/security-checklist.md", "./instructions/tdd-workflow.md", "./instructions/error-handling-advanced.md"],
   "agent": {
     "build": {
       "description": "Build mode - create features, components, and modules with full tool access",
@@ -15,9 +23,522 @@
       }
     }
   },
+  "tui": {
+    "scroll_speed": 3,
+    "scroll_acceleration": {
+      "enabled": true
+    },
+    "diff_style": "auto"
+  },
+  "tools": {
+    "bash": true,
+    "read": true,
+    "write": true,
+    "edit": true,
+    "glob": true,
+    "grep": true,
+    "list": true,
+    "webfetch": true,
+    "task": true,
+    "todowrite": true,
+    "todoread": true,
+    "question": true
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true
+  },
+  "watcher": {
+    "ignore": ["node_modules/**", "dist/**", ".git/**", "*.log"]
+  },
   "permission": {
     "skill": {
       "*": "allow"
+    },
+    "bash": {
+      "ls *": "allow",
+      "rg *": "allow",
+      "make *": "allow",
+      "echo *": "allow",
+      "grep *": "allow",
+      "cat *": "allow"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      },
+      "enabled": true,
+      "timeout": 60000
+    },
+    "firecrawl-mcp": {
+      "type": "local",
+      "command": ["npx", "-y", "firecrawl-mcp"],
+      "environment": {
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
+      },
+      "enabled": false,
+      "timeout": 60000
+    },
+    "web-search-prime": {
+        "type": "remote",
+        "url": "https://api.z.ai/api/mcp/web_search_prime/mcp",
+        "headers": {
+            "Authorization": "Bearer 22537ce0e35c4037a85134a22dee5517.DnQhVE9hQtIXdzfO"
+        },
+        "enabled": true
+    }
+  },
+  "provider": {
+    "google": {
+      "models": {
+        "antigravity-claude-opus-4-5-thinking": {
+          "name": "Claude Opus 4.5 Thinking"
+        },
+        "antigravity-claude-sonnet": {
+          "name": "Claude Sonnet"
+        },
+        "antigravity-gemini-3-flash": {
+          "name": "Gemini 3 Flash"
+        },
+        "antigravity-gemini-3-pro": {
+          "name": "Gemini 3 Pro"
+        }
+      }
+    },
+    "proxypal": {
+      "models": {
+        "claude-haiku-4.5": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "name": "Copilot Claude Haiku 4 5 [Copilot]"
+        },
+        "claude-opus-4.1": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "name": "Copilot Claude Opus 4 1 [Copilot]"
+        },
+        "claude-opus-4.5": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "name": "Copilot Claude Opus 4 5 [Copilot]"
+        },
+        "claude-sonnet-4": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "name": "Copilot Claude Sonnet 4 [Copilot]"
+        },
+        "claude-sonnet-4.5": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "name": "Copilot Claude Sonnet 4 5 [Copilot]"
+        },
+        "gemini-2.5-computer-use-preview-10-2025": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Gemini 2 5 Computer Use Preview 10 2025"
+        },
+        "gemini-2.5-flash": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Gemini 2 5 Flash"
+        },
+        "gemini-2.5-flash-lite": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Gemini 2 5 Flash Lite"
+        },
+        "gemini-2.5-pro": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Copilot Gemini 2 5 Pro [Copilot]"
+        },
+        "gemini-3-flash-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Gemini 3 Flash Preview",
+          "options": {
+            "generationConfig": {
+              "thinkingConfig": {
+                "includeThoughts": true,
+                "thinkingLevel": "high"
+              }
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "high": {
+              "thinkingLevel": "high"
+            },
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "medium": {
+              "thinkingLevel": "medium"
+            }
+          }
+        },
+        "gemini-3-pro-image-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "name": "Gemini 3 Pro Image Preview"
+        },
+        "gemini-3-pro-preview": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Gemini 3 Pro Preview",
+          "options": {
+            "generationConfig": {
+              "thinkingConfig": {
+                "includeThoughts": true,
+                "thinkingLevel": "high"
+              }
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "high": {
+              "thinkingLevel": "high"
+            },
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "medium": {
+              "thinkingLevel": "medium"
+            }
+          }
+        },
+        "gemini-claude-opus-4-5-thinking": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Claude Opus 4 5 Thinking",
+          "options": {
+            "thinking": {
+              "budgetTokens": 32768,
+              "type": "enabled"
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "low": {
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
+            },
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
+            }
+          }
+        },
+        "gemini-claude-sonnet-4-5": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Claude Sonnet 4 5"
+        },
+        "gemini-claude-sonnet-4-5-thinking": {
+          "limit": {
+            "context": 168000,
+            "output": 64000
+          },
+          "modalities": {
+            "input": ["text", "image", "pdf"],
+            "output": ["text"]
+          },
+          "name": "Claude Sonnet 4 5 Thinking",
+          "options": {
+            "thinking": {
+              "budgetTokens": 32768,
+              "type": "enabled"
+            }
+          },
+          "reasoning": true,
+          "variants": {
+            "low": {
+              "thinkingConfig": {
+                "thinkingBudget": 8192
+              }
+            },
+            "max": {
+              "thinkingConfig": {
+                "thinkingBudget": 32768
+              }
+            }
+          }
+        },
+        "gpt-4": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Gpt 4 [Copilot]"
+        },
+        "gpt-4-turbo": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Gpt 4 Turbo [Copilot]"
+        },
+        "gpt-4.1": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Gpt 4 1 [Copilot]"
+        },
+        "gpt-4o": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Gpt 4o [Copilot]"
+        },
+        "gpt-5": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5-codex": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 Codex [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5-codex-mini": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 Codex Mini [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5-mini": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Copilot Gpt 5 Mini [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 1 [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 1 Codex [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex-max": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 1 Codex Max [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.1-codex-mini": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 1 Codex Mini [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.2": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 2 [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-5.2-codex": {
+          "limit": {
+            "context": 107520,
+            "output": 32768
+          },
+          "name": "Gpt 5 2 Codex [Copilot]",
+          "options": {
+            "reasoningEffort": "medium"
+          },
+          "reasoning": true
+        },
+        "gpt-oss-120b-medium": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Gpt Oss 120b Medium"
+        },
+        "grok-code-fast-1": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Grok Code Fast 1 [Copilot]"
+        },
+        "o1": {
+          "limit": {
+            "context": 168000,
+            "output": 100000
+          },
+          "name": "Copilot O1 [Copilot]"
+        },
+        "o1-mini": {
+          "limit": {
+            "context": 168000,
+            "output": 100000
+          },
+          "name": "Copilot O1 Mini [Copilot]"
+        },
+        "qwen3-coder-flash": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "name": "Qwen3 Coder Flash"
+        },
+        "qwen3-coder-plus": {
+          "limit": {
+            "context": 880964,
+            "output": 65536
+          },
+          "name": "Qwen3 Coder Plus"
+        },
+        "raptor-mini": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Copilot Raptor Mini [Copilot]"
+        },
+        "tab_flash_lite_preview": {
+          "limit": {
+            "context": 107520,
+            "output": 16384
+          },
+          "name": "Tab_flash_lite_preview"
+        },
+        "vision-model": {
+          "limit": {
+            "context": 220201,
+            "output": 65536
+          },
+          "name": "Vision Model"
+        }
+      },
+      "name": "ProxyPal",
+      "npm": "@ai-sdk/anthropic",
+      "options": {
+        "apiKey": "proxypal-local",
+        "baseURL": "http://127.0.0.1:8317/v1",
+        "includeUsage": true
+      }
     }
   }
 }

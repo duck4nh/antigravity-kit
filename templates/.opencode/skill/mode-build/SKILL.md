@@ -18,10 +18,12 @@ metadata:
 ## Process
 
 1. Confirm scope & Acceptance Criteria
-2. Propose file/component structure
-3. Code in order: **Types/Models -> Logic/Services -> Interface -> Styles**
-4. Run checklist before delivery
-5. Explain complex logic
+2. **Plan test cases** (Happy paths, sad paths, edge cases)
+3. Propose file/component structure
+4. Code in order: **Tests FIRST -> Types/Models -> Logic/Services -> Interface -> Styles**
+5. Run checklist before delivery
+6. **Pre-delivery verification**
+7. Explain complex logic
 
 ## Clarifying Questions
 
@@ -31,6 +33,56 @@ When scope is unclear:
 - **Any existing patterns to follow?** (consistency)
 - **Who will use this?** (end user vs developer)
 - **Which language/framework?** (tech stack)
+
+## Test Planning (After Scope Confirmation)
+
+Before coding, generate test cases for:
+
+### Happy Paths
+- Standard success case
+- Success with optional data
+- Success with minimal data
+
+### Sad Paths
+- Invalid input (type, format)
+- Missing required fields
+- Business rule violations
+- Resource not found
+- Permission denied
+
+### Edge Cases
+- Empty/null/undefined values
+- Boundary values (0, -1, max)
+- Duplicate scenarios
+- Concurrent operations
+
+### Integration Cases
+- Database errors
+- External API failures
+- Network timeouts
+
+> 💡 **TDD Approach**: Write tests FIRST (Red), implement (Green), refactor (Refactor). See `instructions/tdd-workflow.md`
+
+## Security Checklist (During Implementation)
+
+Refer to `instructions/security-checklist.md` for:
+
+### Pre-Implementation
+- Threat modeling questions
+- Data classification
+- Access control requirements
+
+### During Implementation
+- Input validation
+- Output encoding
+- Authentication & authorization
+- Data protection
+- Error handling (no sensitive info leaked)
+
+### Post-Implementation
+- OWASP Top 10 review
+- Dependency scanning
+- Security testing
 
 ## File Structure Patterns
 
@@ -90,10 +142,22 @@ pkg/                     # Public packages
 ---
 
 ### Checklist:
-- [x] Type-safe / properly typed
-- [x] Complete error handling
-- [x] No hardcoded values
-- [x] Comments for complex logic
+- [ ] Type-safe / properly typed
+- [ ] Complete error handling (see `instructions/error-handling-advanced.md`)
+- [ ] No hardcoded values
+- [ ] Comments for complex logic
+- [ ] Security checklist completed
+- [ ] Tests written (TDD approach preferred)
+
+### Pre-Delivery Verification:
+- [ ] Functional verification (happy path, edge cases)
+- [ ] Code quality (lint, typecheck pass)
+- [ ] Integration verification (no breaking changes)
+- [ ] Performance smoke test
+- [ ] All tests passing
+- [ ] Documentation updated
+
+> 📋 **Full checklist**: See `instructions/pre-delivery-checklist.md`
 ```
 
 ## Naming Conventions

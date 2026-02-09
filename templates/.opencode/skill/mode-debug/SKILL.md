@@ -21,7 +21,10 @@ metadata:
 2. Reproduce the bug
 3. Analyze root cause
 4. Propose fix + explanation
-5. Propose prevention measures
+5. **Propose prevention measures**
+6. **Post-fix verification**
+7. **Impact assessment**
+8. **Rollback plan (if needed)**
 
 ## Required Questions If Information Is Missing
 
@@ -89,6 +92,36 @@ metadata:
 |------------|----------|
 | [Add validation] | High |
 | [Write unit test] | Medium |
+
+### Post-Fix Verification:
+| Check       | Action/Command                          | Expected   |
+| ----------- | --------------------------------------- | ---------- |
+| Reproduce   | [Steps to trigger bug]                  | NOT occur  |
+| Unit tests  | `npm test -- related.test.ts`           | Pass       |
+| Integration | Manual test related features            | Works      |
+| Performance | Compare before/after metrics            | No degrade |
+
+### Impact Assessment:
+**Affected Areas:**
+- [ ] Direct: [list files/functions modified]
+- [ ] Indirect: [list dependent modules]
+- [ ] User-facing: [list UI/UX changes]
+
+**Risk Level:** [Low/Medium/High]
+
+**Monitoring needed:** [logs/metrics to watch after fix]
+
+### Rollback Plan:
+**Rollback if:**
+- New errors appear
+- Performance degrades > 20%
+- Dependent features break
+
+**Rollback steps:**
+1. Revert commit [hash]
+2. Restart services
+3. Verify old behavior restored
+4. Document lessons learned
 ```
 
 ## Quick Fix Examples
@@ -119,6 +152,7 @@ metadata:
 |-------|-----|
 | Guess randomly | Request log/screenshot |
 | Refactor randomly | Fix the right place, minimal change |
-| Stop after fixing | Propose prevention |
+| Stop after fixing | Verify + prevent recurrence |
 | Fix symptoms | Find and fix root cause |
 | Skip testing fix | Verify fix works before delivering |
+| Ignore side effects | Assess impact + rollback plan |

@@ -17,12 +17,15 @@ metadata:
 
 ## Process
 
-1. Measure current state (baseline)
-2. Identify main bottleneck
-3. Propose improvements + predict results
-4. Refactor by priority order
-5. Compare before/after
-6. Ensure tests still pass
+1. **Risk assessment** (classify change type)
+2. Measure current state (baseline)
+3. Identify main bottleneck
+4. **Choose safe optimization strategy**
+5. Propose improvements + predict results
+6. Refactor by priority order
+7. Compare before/after
+8. Ensure tests still pass
+9. **Document rollback plan**
 
 ## Performance Metrics by Language
 
@@ -83,6 +86,88 @@ metadata:
 - [ ] Tests still pass
 - [ ] Behavior unchanged
 - [ ] Performance verified
+
+## Risk Assessment
+
+### Risk Classification
+| Change Type      | Risk Level | Rollback Ease | Strategy                        |
+| ---------------- | ---------- | ------------- | ------------------------------- |
+| Algorithm change | High       | Easy          | A/B test, gradual rollout       |
+| Database schema  | High       | Hard          | Migration plan, rollback script |
+| Caching layer    | Medium     | Medium        | Feature flag, monitor           |
+| Code refactor    | Low        | Easy          | Tests, revert if fail           |
+
+### Risk Questions
+- [ ] What if optimization introduces bugs?
+- [ ] Can we rollback easily?
+- [ ] What's the blast radius?
+- [ ] Who gets affected if fails?
+
+### Safe Optimization Strategies
+
+#### Strategy 1: Feature Flag (Recommended for critical paths)
+```typescript
+// Use feature flag for new optimized code
+const useNewOptimization = featureFlags.get('use-v2-algorithm', false);
+
+if (useNewOptimization) {
+  return optimizedMethod(data);
+} else {
+  return legacyMethod(data);
+}
+```
+
+#### Strategy 2: Gradual Rollout
+```markdown
+**Week 1:** 5% of traffic
+**Week 2:** 25% of traffic
+**Week 3:** 50% of traffic
+**Week 4:** 100% of traffic
+
+**Monitor after each phase:**
+- Error rate
+- Performance metrics
+- User complaints
+```
+
+#### Strategy 3: A/B Testing
+```markdown
+**Control:** Current implementation
+**Variant:** Optimized implementation
+
+**Metrics to compare:**
+- Response time (p50, p95, p99)
+- Error rate
+- Resource usage
+- User satisfaction
+
+**Statistical significance:** 95% confidence
+```
+
+## Rollback Plan
+
+### Document Before Optimizing
+```markdown
+**Rollback Trigger:**
+- Error rate increases > 5%
+- p95 latency degrades > 20%
+- User complaints > X/hour
+
+**Rollback Steps:**
+1. [Revert commit / disable feature flag]
+2. [Verify old behavior restored]
+3. [Monitor for Y minutes]
+4. [Document lessons learned]
+```
+
+### Optimization Safety Checklist
+- [ ] Baseline metrics documented
+- [ ] Rollback plan written
+- [ ] Feature flag available (if critical)
+- [ ] Monitoring/alerts configured
+- [ ] Tests covering the change
+- [ ] Code reviewed
+- [ ] Staged rollout planned
 ```
 
 ## Quick Optimization Examples
