@@ -4,6 +4,40 @@ Specialized agents for development tasks. Triggered automatically by context or 
 
 ---
 
+## 📋 Quick Navigation
+
+| Documentation | Purpose |
+|---------------|---------|
+| **Main Agents** | Core OpenCode agents (below) |
+| **Vibecode Agents** | Partnership model agents → See `instructions/vibecode-agents.md` |
+
+---
+
+## Available Agents
+
+### Core OpenCode Agents
+
+| Agent | Trigger | Description |
+|-------|---------|-------------|
+| | `fullstack-dev` | frontend, backend, react, api | Full-stack: Next.js, React, Node.js, APIs |
+| | `infra-expert` | database, devops, docker, deploy | Infrastructure: DB, CI/CD, Cloud |
+| | `code-reviewer` | review, audit, check | Code review and quality |
+| | `security-expert` | security, vulnerability | Security assessment |
+
+### Vibecode Agents (Partnership Model)
+
+| Agent | Trigger | Description | Documentation |
+|-------|---------|-------------|----------------|
+| **Architect** | vision, propose, design | Proposes complete vision first | `instructions/vibecode-agents.md` |
+| **Builder** | build, implement | Implements approved blueprint | `instructions/vibecode-agents.md` |
+| **Investigator** | investigate, debug, analyze | Deep debugging protocol | `instructions/vibecode-agents.md` |
+| **QA Specialist** | qa, test planning, quality | Quality assurance planning | `instructions/vibecode-agents.md` |
+| **X-Ray** | xray, handover, document | Project documentation | `instructions/vibecode-agents.md` |
+
+> **💡 Tip**: Vibecode agents use a **Partnership Model** where AI proposes vision first, then you provide context. Traditional agents follow your direct instructions. Use the right agent for your task!
+
+---
+
 ## Available Agents
 
 | Agent | Trigger | Description |

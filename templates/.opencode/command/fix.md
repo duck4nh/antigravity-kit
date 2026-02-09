@@ -9,6 +9,43 @@ argument-hint: Bug description or error message
 
 > 💡 Load `mode-debug` skill for error patterns, prevention strategies, and examples.
 
+---
+
+## Quick Fix vs Deep Investigation
+
+**Use `/fix` for:**
+- Straightforward bugs with clear error messages
+- Issues you can quickly identify and resolve
+- Simple fixes that don't require extensive analysis
+- Problems where the solution is obvious
+
+**Examples:**
+```
+/fix TypeError: Cannot read property 'x' of undefined
+/fix Button click not firing
+/fix Import statement missing
+```
+
+**Use `/investigate` for:**
+- Complex or intermittent bugs
+- Issues requiring deep system analysis
+- Problems that resist standard debugging
+- Root cause analysis for persistent errors
+- Understanding WHY something is happening
+
+**Examples:**
+```
+/investigate Random 500 errors in production
+/investigate Memory leak over time
+/investigate Performance degradation only under load
+```
+
+**Choosing the right approach:**
+- If you can say "I know what's wrong, I just need to fix it" → `/fix`
+- If you need to say "I need to understand what's happening first" → `/investigate`
+
+---
+
 ## Workflow
 ```
 Gather (5W1H) → Reproduce → Analyze → Propose → Fix → Verify → Impact/Rollback

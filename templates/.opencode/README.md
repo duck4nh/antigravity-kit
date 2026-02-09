@@ -2,6 +2,39 @@
 
 Cấu hình tối ưu cho OpenCode AI Assistant với agents, commands, skills, và instructions.
 
+**Version**: 1.0 + Vibecode Kit v4.0 Integration
+
+---
+
+## 🎉 What's New: Vibecode Kit v4.0
+
+**The Partnership Edition** - A revolutionary approach where AI proposes complete vision first based on proven patterns, then you provide context.
+
+### New Features
+
+- **6 New Commands**: `/vision`, `/investigate`, `/qa`, `/xray`, `/blueprint`, `/handover`
+- **8 New Skills**: Mode skills (investigate, qa, xray) + Project templates (landing-page, saas-app, dashboard, blog-docs, portfolio)
+- **Partnership Model**: AI proposes first, you provide context (vs. traditional "AI follows orders")
+- **Enhanced Commands**: `/fix` and `/test` now include guidance on when to use vs. specialized workflows
+
+### Quick Start with Vibecode
+
+```bash
+# Start a new project with AI-proposed vision
+/vision I need a landing page for my SaaS product
+
+# Deep investigation for complex bugs
+/investigate Random 500 errors in production
+
+# Quality assurance planning
+/qa Plan testing for payment feature
+
+# Comprehensive documentation
+/xray Current project for handoff
+```
+
+**See**: `.vibecode/README.md` for complete Vibecode documentation.
+
 ---
 
 ## 📁 Cấu Trúc Thư Mục
@@ -11,9 +44,15 @@ Cấu hình tối ưu cho OpenCode AI Assistant với agents, commands, skills, 
 ├── opencode.json          # Cấu hình chính (lazy loading enabled)
 ├── AGENTS.md              # Tài liệu về agents
 ├── agent/                 # Các agent chuyên biệt (4 files)
-├── command/               # Slash commands (8 files)
+├── command/               # Slash commands (14 files: 8 original + 6 new)
 ├── instructions/          # Hướng dẫn coding (6 files)
-└── skill/                 # Knowledge skills (60+ skills, lazy loaded)
+├── skill/                 # Knowledge skills (68 files: 60+ original + 8 new)
+└── .vibecode/             # Vibecode Kit integration
+    ├── PHILOSOPHY.md      # Partnership model philosophy
+    ├── README.md          # Vibecode quick start
+    ├── CHANGELOG.md       # Version history
+    └── workflows/         # Universal workflow protocol
+        └── VIBECODE-MASTER.md
 ```
 
 ---
