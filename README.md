@@ -2,7 +2,7 @@
 
 > **AI Agent Capability Expansion Toolkit** - Bộ công cụ mở rộng khả năng AI coding assistant với 60+ skills, rules, và workflows chuyên biệt.
 
-[![Version](https://img.shields.io/badge/Version-3.0.0-blue)](https://github.com/duck4nh/antigravity-kit)
+[![Version](https://img.shields.io/badge/Version-4.1.1-blue)](https://github.com/duck4nh/antigravity-kit)
 [![Skills](https://img.shields.io/badge/Skills-60+-blue)](#-skills)
 [![Commands](https://img.shields.io/badge/Commands-14+-green)](#-commands)
 [![Rules](https://img.shields.io/badge/Rules-13-green)](#-rules)
@@ -13,7 +13,7 @@
 ## Table of Contents
 
 - [Introduction](#-introduction)
-- [What's New in v3.0](#-whats-new-in-v30)
+- [What's New in v4.1.1](#-whats-new-in-v411)
 - [Supported IDEs](#-supported-ides)
 - [Installation](#-installation)
 - [Quick Start](#-quick-start)
@@ -54,58 +54,31 @@
 
 ---
 
-## 🚀 What's New in v3.0
+## 🚀 What's New in v4.1.1
 
-### Enhanced Workflow & Quality Assurance
+### Codex Skill Naming Update
 
-#### New Instruction Files
+- Renamed custom Codex skills to shorter IDs (removed `vibecode-` prefix).
+- Examples: `mode-vision`, `mode-blueprint`, `template-saas-app`, `quality-gates`.
 
-| File | Purpose |
-|------|---------|
-| `pre-delivery-checklist.md` | 4-phase verification workflow trước khi deliver code |
-| `security-checklist.md` | Security-first development checklist với OWASP Top 10 |
-| `tdd-workflow.md` | Test-Driven Development workflow với Red-Green-Refactor |
-| `error-handling-advanced.md` | Advanced error handling với classification và recovery strategies |
+### New Codex Usage Documentation
 
-#### Enhanced Commands
+- Added detailed per-skill guide:
+  - `templates/.codex/SKILLS_USAGE_GUIDE.md`
+- Includes: when-to-use matrix, per-skill prompts, lifecycle combos, troubleshooting.
 
-**`/fix` - 3-Level Tiered Debugging**
-- Level 1: Quick Fix (5-10 phút) cho bugs đơn giản
-- Level 2: Standard Debug (15-30 phút) với impact assessment
-- Level 3: Deep Debug (30-60 phút) với rollback plan
+### Template and Config Alignment
 
-**`/review` - Structured Code Review**
-- Output format with severity classification (Critical, Major, Minor)
-- 6-dimensional review checklist
-- Actionable feedback format
+- Updated template skill indexes under:
+  - `templates/.codex/skills/index.md`
+  - `templates/.agents/skills/index.md`
+- Updated config path examples in:
+  - `templates/.codex/config.toml`
 
-#### Enhanced Skills
+### Previous Major Additions (v4.0)
 
-**`mode-build`**
-- Test Planning phase sau scope confirmation
-- Security Checklist integration
-- TDD approach recommended (Tests FIRST)
-
-**`mode-debug`**
-- Post-Fix Verification phase
-- Impact Assessment (affected areas, risk level, monitoring)
-- Rollback Plan
-
-**`mode-optimize`**
-- Risk Assessment phase
-- Safe Optimization Strategies (feature flags, gradual rollout, A/B testing)
-- Rollback Plan
-
-### New Commands (Vibecode Integration)
-
-| Command | Purpose |
-|---------|---------|
-| `/vision` | Partnership model - AI proposes vision first |
-| `/investigate` | Deep debugging protocol cho complex bugs |
-| `/qa` | Quality assurance planning với tiered approach |
-| `/xray` | Project documentation và handover |
-| `/handover` | Alias cho /xray |
-| `/blueprint` | Detailed blueprint creation |
+- Vibecode lifecycle commands: `/vision`, `/blueprint`, `/investigate`, `/qa`, `/xray`, `/handover`.
+- Partnership workflow for planning-first project execution.
 
 ---
 
@@ -220,7 +193,7 @@ npx @duck4nh/antigravity-kit init --ide antigravity
 
 ### Command Comparison
 
-| Task | Old Way | New Way (v3.0) | Benefit |
+| Task | Old Way | New Way (v4.1.1) | Benefit |
 |------|---------|----------------|---------|
 | **Simple bug** | `/fix` + manual steps | `/fix` (Level 1 auto) | ⚡ 5-10 min |
 | **Complex bug** | Manual investigation | `/investigate` hoặc `/fix --level 3` | 🔬 Thorough analysis |

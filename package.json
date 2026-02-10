@@ -1,6 +1,6 @@
 {
   "name": "@duck4nh/antigravity-kit",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "CLI tool to setup Antigravity Kit skills for Antigravity and OpenCode IDEs",
   "main": "bin/index.js",
   "type": "module",

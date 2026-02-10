@@ -15,3 +15,8 @@ For newest Codex discovery behavior, mirror the same skills under:
 ```
 
 Both structures are provided in `templates/` for compatibility.
+
+## Included docs
+
+- Detailed usage guide: `templates/.codex/SKILLS_USAGE_GUIDE.md`
+- Skill naming in this pack uses short IDs (for example: `mode-vision`, `template-saas-app`, `quality-gates`).
