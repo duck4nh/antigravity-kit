@@ -1,0 +1,18 @@
+# Codex global behavior template
+
+model = "gpt-5-codex"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[history]
+persistence = "save-all"
+
+[features]
+shell_tool = true
+request_rule = true
+
+# Optional per-skill controls (uncomment and adjust paths)
+# [[skills.config]]
+# path = "D:/PTIT/AntigravityKit/antigravity-kit/templates/.agents/skills/vibecode-core-governance/SKILL.md"
+# enabled = true
