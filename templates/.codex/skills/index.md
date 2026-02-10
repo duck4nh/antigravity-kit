@@ -1,26 +1,26 @@
 # Skill Index
 
 ## Core
-- vibecode-core-governance
-- vibecode-core-lifecycle
+- core-governance
+- core-lifecycle
 
 ## Modes
-- vibecode-mode-vision
-- vibecode-mode-blueprint
-- vibecode-mode-contract
-- vibecode-mode-build
-- vibecode-mode-refine
-- vibecode-mode-debug
-- vibecode-mode-qa
-- vibecode-mode-investigate
-- vibecode-mode-xray
+- mode-vision
+- mode-blueprint
+- mode-contract
+- mode-build
+- mode-refine
+- mode-debug
+- mode-qa
+- mode-investigate
+- mode-xray
 
 ## Templates
-- vibecode-template-landing-page
-- vibecode-template-saas-app
-- vibecode-template-dashboard
-- vibecode-template-blog-docs
-- vibecode-template-portfolio
+- template-landing-page
+- template-saas-app
+- template-dashboard
+- template-blog-docs
+- template-portfolio
 
 ## Quality
-- vibecode-quality-gates
+- quality-gates

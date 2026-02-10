@@ -14,5 +14,5 @@ request_rule = true
 
 # Optional per-skill controls (uncomment and adjust paths)
 # [[skills.config]]
-# path = "D:/PTIT/AntigravityKit/antigravity-kit/templates/.agents/skills/vibecode-core-governance/SKILL.md"
+# path = "D:/PTIT/AntigravityKit/antigravity-kit/templates/.agents/skills/core-governance/SKILL.md"
 # enabled = true
