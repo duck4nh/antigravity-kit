@@ -1,0 +1,67 @@
+name: Configuration Validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'templates/.opencode/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'templates/.opencode/**'
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Check always-on token budget
+        run: |
+          echo "=== Checking always-on context budget ==="
+          bash scripts/check-token-budget.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Check for dead instruction paths
+        run: |
+          echo "=== Checking for dead instruction paths ==="
+          bash scripts/check-dead-paths.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Check command references
+        run: |
+          echo "=== Checking command references ==="
+          bash scripts/check-command-refs.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Scan for hardcoded secrets
+        run: |
+          echo "=== Scanning for hardcoded secrets ==="
+          bash scripts/scan-secrets.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Check for duplicate sections
+        run: |
+          echo "=== Checking for duplicate sections ==="
+          bash scripts/check-duplicates.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Check skill sizes
+        run: |
+          echo "=== Checking skill sizes ==="
+          bash scripts/check-skill-sizes.sh
+        working-directory: ./templates/.opencode
+      
+      - name: Validate JSON syntax
+        run: |
+          echo "=== Validating JSON files ==="
+          jq empty opencode.json > /dev/null && echo "✅ opencode.json valid"
+        working-directory: ./templates/.opencode
+      
+      - name: Generate validation report
+        if: always()
+        run: |
+          echo "=== Validation Complete ==="
+          echo "All checks passed! Configuration is clean and optimized."

@@ -40,7 +40,7 @@
 
 ### Key Features
 
-✅ **60+ Skills** - Lazy-loaded để tiết kiệm context  
+✅ **68 Skills** - Lazy-loaded để tiết kiệm context  
 ✅ **14 Commands** - Nhanh chóng thực hiện tác vụ phức tạp  
 ✅ **13 Rules** - Hướng dẫn agent behavior  
 ✅ **Dual IDE Support** - Hoạt động trên cả Antigravity và OpenCode  

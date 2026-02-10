@@ -9,7 +9,7 @@ Specialized agents for development tasks. Triggered automatically by context or 
 | Documentation | Purpose |
 |---------------|---------|
 | **Main Agents** | Core OpenCode agents (below) |
-| **Vibecode Agents** | Partnership model agents → See `instructions/vibecode-agents.md` |
+| **Vibecode Agents** | Partnership model agents → See `docs/vibecode/vibecode-agents.md` |
 
 ---
 
@@ -28,11 +28,11 @@ Specialized agents for development tasks. Triggered automatically by context or 
 
 | Agent | Trigger | Description | Documentation |
 |-------|---------|-------------|----------------|
-| **Architect** | vision, propose, design | Proposes complete vision first | `instructions/vibecode-agents.md` |
-| **Builder** | build, implement | Implements approved blueprint | `instructions/vibecode-agents.md` |
-| **Investigator** | investigate, debug, analyze | Deep debugging protocol | `instructions/vibecode-agents.md` |
-| **QA Specialist** | qa, test planning, quality | Quality assurance planning | `instructions/vibecode-agents.md` |
-| **X-Ray** | xray, handover, document | Project documentation | `instructions/vibecode-agents.md` |
+| **Architect** | vision, propose, design | Proposes complete vision first | `docs/vibecode/vibecode-agents.md` |
+| **Builder** | build, implement | Implements approved blueprint | `docs/vibecode/vibecode-agents.md` |
+| **Investigator** | investigate, debug, analyze | Deep debugging protocol | `docs/vibecode/vibecode-agents.md` |
+| **QA Specialist** | qa, test planning, quality | Quality assurance planning | `docs/vibecode/vibecode-agents.md` |
+| **X-Ray** | xray, handover, document | Project documentation | `docs/vibecode/vibecode-agents.md` |
 
 > **💡 Tip**: Vibecode agents use a **Partnership Model** where AI proposes vision first, then you provide context. Traditional agents follow your direct instructions. Use the right agent for your task!
 

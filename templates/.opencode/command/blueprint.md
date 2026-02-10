@@ -59,7 +59,7 @@ When you use `/blueprint`:
 
 ⚠️ **Important**: After blueprint is approved, NO MAJOR CHANGES allowed.
 
-Only minor refinements possible in the REFINE step:
+Only minor refinements possible after approval:
 - Text/copy changes
 - Color adjustments
 - Spacing tweaks
@@ -89,15 +89,13 @@ You'll receive a comprehensive BLUEPRINT document containing:
 
 ## After Blueprint
 
-Once blueprint is approved:
-1. Use `/build` or provide to builder
-2. Implementation follows exact specifications
-3. Use `/refine` for minor adjustments only
+Once blueprint is approved, implementation can begin using standard development commands or by providing the blueprint to a builder agent.
+
+**Note**: Major changes after approval require revisiting the `/vision` step.
 
 ## Related Commands
 
 - `/vision` - Must complete first
-- `/contract` - Optional commitment summary
 - Template skills for specific project types
 
 ## Workflow
@@ -111,9 +109,7 @@ Once blueprint is approved:
     ↓
 [Approve blueprint]
     ↓
-/build (implement according to spec)
-    ↓
-/refine (minor adjustments only)
+[Implementation begins]
 ```
 
 ---
